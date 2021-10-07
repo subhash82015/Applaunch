@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    app:cardBackgroundColor="@color/white">
+   <LinearLayout
+       android:id="@+id/ly_item"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical"
+       android:padding="10dp"
+       android:background="@color/white"
+       >
+
+       <TextView
+           android:id="@+id/textViewId"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="Id"
+           android:layout_marginTop="5dp"
+           android:textColor="@color/black"
+
+           android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+       <TextView
+           android:id="@+id/textViewName"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="Name"
+           android:layout_marginTop="3dp"
+           android:textColor="@color/black"
+           android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+       <TextView
+           android:id="@+id/textViewEmail"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="Email"
+           android:layout_marginTop="3dp"
+           android:textColor="@color/black"
+           android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+ <View
+     android:layout_width="match_parent"
+     android:layout_height="0.4dp"
+     android:layout_marginTop="5dp"
+     android:background="@color/black_light"
+     />
+   </LinearLayout>
+</androidx.cardview.widget.CardView>

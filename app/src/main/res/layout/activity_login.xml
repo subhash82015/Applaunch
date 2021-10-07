@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+<data>
+    <import type="android.view.View" />
+
+    <variable
+        name="viewModel"
+        type="com.example.demo.viewmodel.LoginViewModel" />
+</data>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:background="@color/white"
+
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="15dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@color/white"
+        >
+
+
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:layout_gravity="center"
+    android:gravity="center"
+    app:cardCornerRadius="10dp"
+    app:cardBackgroundColor="@color/white"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        android:background="@color/white"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:text="@={viewModel.page}"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_fname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/et_plain"
+                android:gravity="left"
+                android:hint="Enter First Name"
+                android:inputType="text"
+
+                android:paddingLeft="9dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="@={viewModel.fname}"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black_light"
+                android:textSize="14dp"
+                android:visibility="@{viewModel.loginType==0 ? View.VISIBLE : View.GONE, default=gone}"
+
+                />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_lname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/et_plain"
+                android:gravity="left"
+                android:hint="Enter Last Name"
+                android:inputType="text"
+                android:paddingLeft="9dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+
+                android:text="@={viewModel.lname}"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black_light"
+                android:textSize="14dp"
+                android:visibility="@{viewModel.loginType==0 ? View.VISIBLE : View.GONE, default=gone}"
+
+                />
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/et_plain"
+                android:gravity="left"
+                android:hint="Enter Email"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="9dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="@={viewModel.email}"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black_light"
+                android:textSize="14dp"
+                android:visibility="visible" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/et_plain"
+                android:gravity="left"
+                android:hint="Enter Password"
+                android:inputType="textPassword"
+                android:paddingLeft="9dp"
+                android:paddingTop="10dp"
+
+                android:paddingBottom="10dp"
+                android:text="@={viewModel.password}"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black_light"
+                android:textSize="14dp"
+                android:visibility="visible" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/border_fill"
+                android:gravity="center"
+                android:onClick="@{viewModel::onContinueClick}"
+                android:paddingVertical="4dp"
+                android:singleLine="true"
+                android:text="@={viewModel.btn_submit}"
+                android:textColor="@color/white"
+                android:textSize="12dp" />
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
+
+</LinearLayout>
+
+</layout>
+<!--
+
+
+<RelativeLayout
+android:id="@+id/rlloginmobile"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_centerHorizontal="true"
+android:layout_marginTop="@dimen/_100sdp"
+android:gravity="center_horizontal"
+android:visibility="@{viewModel.loginType==1 ? View.VISIBLE : View.GONE, default=gone}"
+>
+
+                   -->

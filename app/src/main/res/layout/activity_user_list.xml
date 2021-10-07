@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+<data>
+    <import type="android.view.View" />
+
+    <variable
+        name="viewModel"
+        type="com.example.demo.viewmodel.HomeViewModel" />
+</data>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/purple_500"
+        android:padding="10dp"
+
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="@={viewModel.page}"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/btn_add_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:onClick="@{viewModel::onAddClick}"
+
+            android:src="@drawable/ic_baseline_add_circle_outline_24" />
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_userList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="@{viewModel.loginType==0 ? View.VISIBLE : View.GONE, default=gone}"
+        android:layout_marginTop="10dp"
+        android:background="@color/red">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="@{viewModel.loginType==1 ? View.VISIBLE : View.GONE, default=gone}"
+
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@color/white"
+            android:gravity="center"
+            android:padding="15dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/et_fname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/et_plain"
+                        android:gravity="left"
+                        android:hint="Enter First Name"
+                        android:inputType="text"
+                        android:paddingLeft="9dp"
+                        android:paddingTop="10dp"
+                        android:text="@={viewModel.fname}"
+
+                        android:paddingBottom="10dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black_light"
+                        android:textSize="14dp"
+                        android:visibility="visible" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/et_lname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/et_plain"
+                        android:gravity="left"
+                        android:hint="Enter Last Name"
+                        android:inputType="text"
+                        android:text="@={viewModel.lname}"
+
+                        android:paddingLeft="9dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black_light"
+                        android:textSize="14dp"
+                        android:visibility="visible" />
+
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/et_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/et_plain"
+                        android:gravity="left"
+                        android:hint="Enter Email"
+                        android:text="@={viewModel.email}"
+
+                        android:inputType="textEmailAddress"
+                        android:paddingLeft="9dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black_light"
+                        android:textSize="14dp"
+                        android:visibility="visible" />
+
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="15dp"
+                            android:orientation="horizontal">
+
+                            <androidx.appcompat.widget.AppCompatButton
+                                android:id="@+id/btn_save"
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:layout_margin="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/border_fill"
+                                android:gravity="center"
+                                android:onClick="@{viewModel::onSaveClick}"
+
+                                android:singleLine="true"
+                                android:text="Save"
+                                android:textColor="@color/white"
+                                android:textSize="12dp" />
+
+                            <androidx.appcompat.widget.AppCompatButton
+                                android:id="@+id/btn_cancel"
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:layout_margin="5dp"
+                                android:layout_weight="1"
+                                android:onClick="@{viewModel::onCancelClick}"
+
+                                android:background="@drawable/border_fill_cancel"
+                                android:gravity="center"
+                                android:singleLine="true"
+                                android:text="Cancel"
+                                android:textColor="@color/white"
+                                android:textSize="12dp" />
+
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="@{viewModel.loginType==2 ? View.VISIBLE : View.GONE, default=gone}"
+
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@color/white"
+            android:gravity="center"
+            android:padding="15dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_weather"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/et_plain"
+                        android:gravity="left"
+                        android:inputType="text"
+                        android:paddingLeft="9dp"
+                        android:paddingTop="10dp"
+                        android:text="@={viewModel.fname}"
+
+                        android:paddingBottom="10dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black_light"
+                        android:textSize="14dp"
+                        android:visibility="visible" />
+
+                   <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/et_plain"
+                    android:gravity="left"
+                    android:inputType="text"
+                    android:paddingLeft="9dp"
+                    android:paddingTop="10dp"
+                    android:text="Hello"
+
+                    android:paddingBottom="10dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black_light"
+                    android:textSize="14dp"
+                    android:visibility="visible" />
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
+
+
+</layout>
